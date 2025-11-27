@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --text-primary: #37352f;
+            --text-secondary: #979a9c;
+            --icon-secondary: #979a9c;
+            --bg-tertiary: rgba(55, 53, 47, 0.08); /* 탭 배경색 */
+            --card-shadow: rgba(15, 15, 15, 0.05) 0px 2px 4px, rgba(15, 15, 15, 0.02) 0px 0px 0px 1px;
+            --card-hover-bg: #f7f7f5;
+        }
+
+        .container {
+            /* **가장 중요한 부분: 전체 너비를 100%로 설정하여 노션 블록에 꽉 차게 함** */
+            width: 100%;
+            display: contents; 
+            /* contents는 박스를 생성하지 않고 자식 요소만 렌더링하도록 합니다. */
+        }
+
+        .header-bar {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            padding-left: 16px; /* 임의의 여백 추가 */
+            padding-right: 16px;
+        }
+
+        .tab-button {
+            user-select: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            height: 32px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+            transition: background 20ms ease-in;
+        }
+
+        .tab-button:hover {
+            background: rgba(55, 53, 47, 0.12);
+        }
+
+        .settings-button {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            fill: var(--icon-secondary);
+            transition: background 20ms ease-in;
+        }
+
+        .gallery-body {
+            overflow-x: auto; /* 가로 스크롤 가능하게 유지 */
+            padding: 16px; /* 갤러리 전체 패딩 */
+        }
+        
+        .gallery-grid {
+            display: grid;
+            /* 최소 260px, 최대 1fr로 반응형 그리드 유지 */
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+            gap: 16px;
+        }
+
+        .gallery-item a {
+            display: flex;
+            flex-direction: column;
+            color: inherit;
+            text-decoration: none;
+            user-select: none;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+            box-shadow: var(--card-shadow);
+            transition: background 100ms ease-out;
+            background: white; /* 카드 배경색 */
+        }
+
+        .gallery-item a:hover {
+            background: var(--card-hover-bg);
+        }
+
+        .cover-area {
+            width: 100%; /* **여기도 100% 유지** */
+            height: 200px; /* 고정 높이 예시 */
+            background: #e3e3e3; /* 커버 미디어 없을 때 배경색 */
+            position: relative;
+        }
+        
+        .title-area {
+            padding: 8px 10px;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .new-page-button {
+            user-select: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            border-radius: 10px;
+            border: 1px solid #e3e3e3; /* 테두리 */
+            padding: 9px 14px 8px;
+            min-height: 40px;
+            height: 100%;
+            color: var(--icon-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 Gallery View</title>
+    <style>
+        /* 변수/값들은 Notion의 기본값을 참고하여 예시로 넣었습니다. */
+        :root {
+            --text-primary: #37352f;
+            --text-secondary: #979a9c;
+            --icon-secondary: #979a9c;
+            --bg-tertiary: rgba(55, 53, 47, 0.08); /* 탭 배경색 */
+            --card-shadow: rgba(15, 15, 15, 0.05) 0px 2px 4px, rgba(15, 15, 15, 0.02) 0px 0px 0px 1px;
+            --card-hover-bg: #f7f7f5;
+        }
+
+        .container {
+            /* **가장 중요한 부분: 전체 너비를 100%로 설정하여 노션 블록에 꽉 차게 함** */
+            width: 100%;
+            display: contents; 
+            /* contents는 박스를 생성하지 않고 자식 요소만 렌더링하도록 합니다. */
+        }
+
+        .header-bar {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            padding-left: 16px; /* 임의의 여백 추가 */
+            padding-right: 16px;
+        }
+
+        .tab-button {
+            user-select: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            height: 32px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+            transition: background 20ms ease-in;
+        }
+
+        .tab-button:hover {
+            background: rgba(55, 53, 47, 0.12);
+        }
+
+        .settings-button {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            fill: var(--icon-secondary);
+            transition: background 20ms ease-in;
+        }
+
+        .gallery-body {
+            overflow-x: auto; /* 가로 스크롤 가능하게 유지 */
+            padding: 16px; /* 갤러리 전체 패딩 */
+        }
+        
+        .gallery-grid {
+            display: grid;
+            /* 최소 260px, 최대 1fr로 반응형 그리드 유지 */
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+            gap: 16px;
+        }
+
+        .gallery-item a {
+            display: flex;
+            flex-direction: column;
+            color: inherit;
+            text-decoration: none;
+            user-select: none;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+            box-shadow: var(--card-shadow);
+            transition: background 100ms ease-out;
+            background: white; /* 카드 배경색 */
+        }
+
+        .gallery-item a:hover {
+            background: var(--card-hover-bg);
+        }
+
+        .cover-area {
+            width: 100%; /* **여기도 100% 유지** */
+            height: 200px; /* 고정 높이 예시 */
+            background: #e3e3e3; /* 커버 미디어 없을 때 배경색 */
+            position: relative;
+        }
+        
+        .title-area {
+            padding: 8px 10px;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .new-page-button {
+            user-select: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            border-radius: 10px;
+            border: 1px solid #e3e3e3; /* 테두리 */
+            padding: 9px 14px 8px;
+            min-height: 40px;
+            height: 100%;
+            color: var(--icon-secondary);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-bar">
+        <div class="tab-button">
+            <span>2024 Gallery</span>
+        </div>
+        <div style="flex-grow: 1;"></div>
+        <div class="settings-button" aria-label="설정">
+            <svg viewBox="0 0 16 16" style="width: 16px; height: 16px;"><path d="M2.25 5.531h5.692a2.126 2.126 0 0 0 4.116 0h1.692a.625.625 0 1 0 0-1.25H12a2.126 2.126 0 0 0-4 0H2.25a.625.625 0 1 0 0 1.25M10 4.125a.875.875 0 1 1 0 1.75.875.875 0 0 1 0-1.75m-4 9c.921 0 1.706-.586 2-1.406h5.75a.625.625 0 0 0 0-1.25H8.058a2.126 2.126 0 0 0-4.116 0H2.25a.625.625 0 1 0 0 1.25H4a2.13 2.13 0 0 0 2 1.406m0-1.25a.875.875 0 1 1 0-1.75.875.875 0 0 1 0 1.75"></path></svg>
+        </div>
+    </div>
+
+    <div class="gallery-body">
+        <div class="gallery-grid">
+            
+            <div class="gallery-item">
+                <a href="/heerit/January-..." role="link">
+                    <div class="cover-area"></div>
+                    <div class="title-area">January</div>
+                </a>
+            </div>
+
+            <div class="gallery-item">
+                <a href="/heerit/Feburary-..." role="link">
+                    <div class="cover-area"></div>
+                    <div class="title-area">Feburary</div>
+                </a>
+            </div>
+
+            <div class="gallery-item">
+                <a href="/heerit/March-..." role="link">
+                    <div class="cover-area"></div>
+                    <div class="title-area">March</div>
+                </a>
+            </div>
+
+            <div class="gallery-item">
+                <a href="/heerit/April-..." role="link">
+                    <div class="cover-area"></div>
+                    <div class="title-area">April</div>
+                </a>
+            </div>
+
+            <div class="gallery-item">
+                <a href="/heerit/May-..." role="link">
+                    <div class="cover-area"></div>
+                    <div class="title-area">May</div>
+                </a>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: stretch;">
+                <div class="new-page-button">
+                    <svg viewBox="0 0 20 20" style="width: 15px; height: 15px; margin-inline: -1px 6px;"><path d="M10 3.59a.66.66 0 0 1 .66.66v5.09h5.09a.66.66 0 0 1 0 1.32h-5.09v5.09a.66.66 0 0 1-1.32 0v-5.09H4.25a.66.66 0 0 1 0-1.32h5.09V4.25a.66.66 0 0 1 .66-.66"></path></svg>
+                    새 페이지
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+</html>
